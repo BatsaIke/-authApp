@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "express-async-errors": "^3.1.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/morgan": "^1.9.9",
+    "typescript": "^5.7.2"
+  }
+}
