@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 
-// Express session configuration
+// Express session configuratioy
 app.use(
   session({
     secret: process.env.SESSION_SECRET || 'supersecret',
@@ -30,8 +30,18 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-import authRoutes from './routes/auth'; 
+import authRoutes from './routes/auth';
 app.use('/api/v1/auth', authRoutes);
+
+// **Base Route**
+app.get('/api/v1', (req, res) => {
+  res.status(200).json({ message: 'Hello, your API is running!' });
+});
+
+// Fallback route for unmatched routes
+app.get('*', (req, res) => {
+  res.status(404).json({ message: 'Route not found' });
+});
 
 // Database connection
 const PORT = process.env.PORT || 5000;
